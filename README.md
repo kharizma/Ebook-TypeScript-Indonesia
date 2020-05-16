@@ -152,3 +152,66 @@ Untuk tipe data sendiri saya rasa teman-teman tidak asing lagi ya. Bagi yang bar
         let u: undefined = undefined;
         let n: null = null;
     ```
+
+## Function
+
+Function atau dalam bahasa kita adalah fungsi, merupakan dasar dalam membangun aplikasi dalam JS. Di dalam TS menambahkan beberapa kemampuan baru untuk memudahkan pekerjaan.
+
+Function dalam TS dapat dibuat menggunakan pendekatan named function atau anonymous function. Sehingga temen-temen bisa memilih pendekatan yang paling dekat kepada aplikasi yang temen-temen sedang bangun. Berikut ini contoh penerapan pendekatan tersebut.
+
+``` typescript
+    //Named Function
+    function tambah(x,y) {
+        return x+y;
+    }
+
+    //Anonymous Function
+    let operasiTambah = function(x,y) {
+        return x+y;
+    }
+```
+
+### Function Types
+
+Disini kita akan membuat function dengan mendeklarasikan jenis dari tipe data nya. Kita langsung saja buat simple function di bawah ini.
+
+``` typescript
+    //Named Function
+    function tambah(x: number, y: number): number {
+        return x + y;
+    }
+
+    //Anonymous Function
+    let operasiTambah = function(x: number, y: number): number {
+        return x + y;
+    };
+```
+
+Function juga dapat dituliskan dengan menggunakan default parameter dan juga parameter optional. Contoh penerapannya untuk default parameter seperti berikut.
+
+``` typescript
+    function gabungNama(namaPertama: string, namaTengah: string, namaTerakhir: string) {
+        return namaPertama + " " + namaTengah + " " +namaTerakhir;
+    }
+
+    let result1 = gabungNama("Rafka"); // error, too few parameters
+    let result2 = gabungNama("Rafka", "Fatir", "Kharisma"); // ah, just right
+    let result3 = gabungNama("Rafka", "Fatir"); // error, too few parameters
+    let result4 = gabungNama("Rafka", "Fatir", "Kharisma", "Sir");//error, too many parameters
+```
+
+Untuk penerapan paramter optional kalau di JS, setiap parameter akan dianggap optional, sehingga nilai akan menjadi undefined, berbeda dengan TS, kita menerapkannya dengan cara menambahkan tanda tanya (?) ke parameter terakhir yang ingin kita buat sebagai optional. Simak cara penggunaannya.
+
+``` typescript
+    function gabungNama(namaPertama: string, namaTengah: string, namaTerakhir?: string) {
+        if(namaTerakhir)
+            return namaPertama + " " + namaTengah + " " +namaTerakhir;
+        else
+            return namaPertama + " " + namaTengah;
+    }
+
+    let result1 = gabungNama("Rafka"); // error, too few parameters
+    let result2 = gabungNama("Rafka", "Fatir", "Kharisma"); // ah, just right
+    let result3 = gabungNama("Rafka", "Fatir"); /// works correctly now
+    let result4 = gabungNama("Rafka", "Fatir", "Kharisma", "Sir");//error, too many parameters
+```
